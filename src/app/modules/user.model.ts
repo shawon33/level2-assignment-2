@@ -46,7 +46,7 @@ const userOrderSchema = new Schema<userOrder>({
 })
 
 const userSchema = new Schema<User>({
-    id: {
+    userId: {
         type: Number,
         required: true,
         unique: true,

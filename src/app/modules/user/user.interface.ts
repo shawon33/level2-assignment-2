@@ -18,7 +18,7 @@ export type userOrder = {
 }
 
 export type User = {
-    id: number,
+    userId: number,
     userName: string,
     password: string,
     fullName: userFullName,
