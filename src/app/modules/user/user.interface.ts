@@ -1,4 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
+
 
 export type userAddress = {
     street: string,
@@ -25,7 +25,7 @@ export type User = {
     age: number,
     email: string,
     isActive: boolean,
-    hobbies?: "reading" | "summing" | "journey",
+    hobbies: "reading" | "summing" | "journey",
     address: userAddress,
     order: userOrder
 }

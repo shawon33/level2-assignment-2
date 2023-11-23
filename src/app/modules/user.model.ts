@@ -30,17 +30,17 @@ const userAddressSchema = new Schema<userAddress>({
 })
 
 const userOrderSchema = new Schema<userOrder>({
-    productName:{
-        type:String,
-        required:true
+    productName: {
+        type: String,
+        required: true
     },
-    price:{
-        type:Number,
-        required:true
+    price: {
+        type: Number,
+        required: true
     },
-    quantity:{
-        type:Number,
-        required:true
+    quantity: {
+        type: Number,
+        required: true
     }
 
 })
@@ -72,9 +72,9 @@ const userSchema = new Schema<User>({
         unique: true
     },
     hobbies: ['reading', 'summing', 'journey'],
-    address:userAddressSchema,
-      
+    address: userAddressSchema,
+
 })
 
 
-export const UserModel = model<User>('user',userSchema);
+export const UserModel = model<User>('User', userSchema);
