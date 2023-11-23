@@ -17,8 +17,6 @@ export type userOrder = {
     quantity: number
 }
 
-
-
 export type User = {
     id: number,
     userName: string,
@@ -27,8 +25,10 @@ export type User = {
     age: number,
     email: string,
     isActive: boolean,
-    hobbies: "reading" | "summing" | "journey",
+    hobbies?: "reading" | "summing" | "journey",
     address: userAddress,
     order: userOrder
 }
+
+
 
