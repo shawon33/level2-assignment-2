@@ -73,7 +73,7 @@ const userSchema = new Schema<User>({
     },
     hobbies: ['reading', 'summing', 'journey'],
     address: userAddressSchema,
-
+    order:userOrderSchema,
 })
 
 
