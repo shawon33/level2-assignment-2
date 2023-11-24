@@ -1,7 +1,7 @@
 import { UserModel } from "../user.model";
 import { User } from "./user.interface";
 
-const createUserIntoDB = async (user: User) => {
+const createUserIntoDB = async (user: User): Promise<User> => {
   const result = await UserModel.create(user);
   return result;
 }
@@ -12,9 +12,10 @@ const getAllUser = async () => {
 }
 
 
-const getSingleUser = async (id: number) => {
-  const result = await UserModel.findOne({ id });
-  return result
+const getSingleUser = async (userId: number): Promise<User | null> => {
+
+  const result = await UserModel.findOne({ userId })
+  return result;
 }
 
 

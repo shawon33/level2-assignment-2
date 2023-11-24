@@ -47,14 +47,21 @@ const getALLUser = async (req: Request, res: Response) => {
 
 const getSingleUser = async (req: Request, res: Response) => {
     try {
-
-        const userId: number = parseInt(req.params.id)
+        const userId: number = parseInt(req.params.id, 10)
         const result = await UserServices.getSingleUser(userId);
-        res.status(200).json({
-            success: true,
-            message: "single User showed successfully",
-            data: result
-        })
+        if (result) {
+            res.status(200).json({
+                success: true,
+                message: "single User showed successfully",
+                data: result
+            })
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'User not found',
+                data: null,
+            });
+        }
 
     } catch (error: any) {
         res.status(500).json({
