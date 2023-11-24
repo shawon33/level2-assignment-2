@@ -8,7 +8,7 @@ router.post('/create-user',UserController.createUser);
 
 router.get('/',UserController.getALLUser)
 
-
+router.get('/:userId',UserController.getSingleUser)
 
 
 
