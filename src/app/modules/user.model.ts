@@ -7,11 +7,11 @@ import config from "./../config";
 const userNameSchema = new Schema<userFullName>({
     firstName: {
         type: String,
-        required: true
+    
     },
     lastName: {
         type: String,
-        required: true
+      
     },
     _id: false
 })
@@ -132,13 +132,13 @@ userSchema.pre('findOne', function async(next) {
     fieldMap.set('userName', true);
     fieldMap.set('fullName', true);
     fieldMap.set('age', true);
+    fieldMap.set('age', true);
+    fieldMap.set('email', true);
     fieldMap.set('address', true);
     const fieldsToSelect = Array.from(fieldMap.keys()).join(' ');
     this.select(fieldsToSelect)
     next()
-})
-
-
+});
 
 
 //  update user 
@@ -149,6 +149,8 @@ userSchema.pre('findOneAndUpdate', function async(next) {
     fieldMap.set('userName', true);
     fieldMap.set('fullName', true);
     fieldMap.set('age', true);
+    fieldMap.set('email', true);
+    fieldMap.set('hobbies', true);
     fieldMap.set('address', true);
     const fieldsToSelect = Array.from(fieldMap.keys()).join(' ');
     this.select(fieldsToSelect)
@@ -158,12 +160,9 @@ userSchema.pre('findOneAndUpdate', function async(next) {
 
 
 userSchema.post('updateOne', function async(doc, next) {
-    console.log(this, 'update ed user');
+    console.log(this, 'updated user');
     next()
 })
-
-
-
 
 
 
