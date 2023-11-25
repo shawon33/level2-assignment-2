@@ -10,8 +10,8 @@ const userNameSchema = new Schema<userFullName>({
     lastName: {
         type: String,
         required: true
-    }
-
+    },
+    _id: false
 })
 
 const userAddressSchema = new Schema<userAddress>({
@@ -26,7 +26,8 @@ const userAddressSchema = new Schema<userAddress>({
     country: {
         type: String,
         required: true
-    }
+    },
+    _id: false
 })
 
 const userOrderSchema = new Schema<userOrder>({
@@ -41,7 +42,9 @@ const userOrderSchema = new Schema<userOrder>({
     quantity: {
         type: Number,
         required: true
-    }
+    },
+    _id: false
+   
 
 })
 
@@ -54,7 +57,7 @@ const userSchema = new Schema<User>({
     userName: {
         type: String,
         required: true,
-        unique: true
+        unique: true,   
     },
     password: {
         type: String,
@@ -69,11 +72,21 @@ const userSchema = new Schema<User>({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        lowercase: true
     },
-    hobbies: ['reading', 'summing', 'journey'],
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    hobbies: {
+        type: String,
+        emu: ['reading', 'summing', 'journey'],
+        _id: false
+
+    },
     address: userAddressSchema,
-    order:userOrderSchema,
+    order: userOrderSchema,
 })
 
 

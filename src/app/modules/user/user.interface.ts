@@ -3,18 +3,21 @@
 export type userAddress = {
     street: string,
     city: string,
-    country: string
+    country: string,
+    _id: boolean
 }
 export type userFullName = {
     firstName: string,
     lastName: string,
+    _id: boolean
 }
 
 
 export type userOrder = {
     productName: string,
     price: number,
-    quantity: number
+    quantity: number,
+    _id: boolean
 }
 
 export type User = {
