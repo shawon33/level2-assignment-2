@@ -13,9 +13,15 @@ const getAllUser = async () => {
 
 
 const getSingleUser = async (userId: number): Promise<User | null> => {
-
   const result = await UserModel.findOne({ userId })
   return result;
+}
+
+
+const deleteSingleUser = async (userId: number): Promise<User | null> => {
+  const result = await UserModel.deleteOne({userId})
+  return result;
+  
 }
 
 
@@ -23,5 +29,6 @@ const getSingleUser = async (userId: number): Promise<User | null> => {
 export const UserServices = {
   createUserIntoDB,
   getAllUser,
-  getSingleUser
+  getSingleUser,
+  deleteSingleUser
 }
