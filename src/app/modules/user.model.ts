@@ -101,14 +101,14 @@ userSchema.pre('save', async function (next) {
 })
 
 
-userSchema.post('save', function (doc, next) {
-    doc.toJSON = function () {
-        const ret = this.toObject();
-        delete ret.password;
-        return ret;
-    };
-    next()
-})
+// userSchema.post('save', function (doc, next) {
+//     doc.toJSON = function () {
+//         const ret = this.toObject();
+//         delete ret.password;
+//         return ret;
+//     };
+//     next()
+// })
 
 
 
