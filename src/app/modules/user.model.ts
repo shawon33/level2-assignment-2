@@ -116,11 +116,11 @@ userSchema.post('save', function (doc, next) {
 
 userSchema.pre('find', function async(next) {
     const fieldMap = new Map<string, boolean>();
-    fieldMap.delete('_id');
     fieldMap.set('userName', true);
     fieldMap.set('fullName', true);
     fieldMap.set('age', true);
     fieldMap.set('address', true);
+    fieldMap.delete('_id',);
     const fieldsToSelect = Array.from(fieldMap.keys()).join(' ');
     this.select(fieldsToSelect);
     next()
@@ -129,15 +129,40 @@ userSchema.pre('find', function async(next) {
 //single user 
 userSchema.pre('findOne', function async(next) {
     const fieldMap = new Map<string, boolean>();
+    fieldMap.set('userName', true);
+    fieldMap.set('fullName', true);
+    fieldMap.set('age', true);
+    fieldMap.set('address', true);
+    const fieldsToSelect = Array.from(fieldMap.keys()).join(' ');
+    this.select(fieldsToSelect)
+    next()
+})
+
+
+
+
+//  update user 
+
+userSchema.pre('findOneAndUpdate', function async(next) {
+    const fieldMap = new Map<string, boolean>();
     fieldMap.delete('_id');
     fieldMap.set('userName', true);
     fieldMap.set('fullName', true);
     fieldMap.set('age', true);
     fieldMap.set('address', true);
-    const fieldsToSelect =Array.from(fieldMap.keys()).join(' ');
+    const fieldsToSelect = Array.from(fieldMap.keys()).join(' ');
     this.select(fieldsToSelect)
+    console.log(this, ' take user  which is single');
     next()
 })
+
+
+userSchema.post('updateOne', function async(doc, next) {
+    console.log(this, 'update ed user');
+    next()
+})
+
+
 
 
 
