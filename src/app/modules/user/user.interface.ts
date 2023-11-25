@@ -30,7 +30,7 @@ export type User = {
     isActive: boolean,
     hobbies: "reading" | "summing" | "journey",
     address: userAddress,
-    order: userOrder
+    order: [userOrder]
 }
 
 

@@ -7,11 +7,11 @@ import config from "./../config";
 const userNameSchema = new Schema<userFullName>({
     firstName: {
         type: String,
-    
+
     },
     lastName: {
         type: String,
-      
+
     },
     _id: false
 })
@@ -87,7 +87,7 @@ const userSchema = new Schema<User>({
 
     },
     address: userAddressSchema,
-    order: userOrderSchema,
+    order: [userOrderSchema],
 })
 
 
@@ -161,6 +161,19 @@ userSchema.pre('findOneAndUpdate', function async(next) {
 
 userSchema.post('updateOne', function async(doc, next) {
     console.log(this, 'updated user');
+    next()
+})
+
+
+// order update
+userSchema.pre('updateOne', function async(next) {
+    const newData = this.getUpdate();
+    console.log(newData);
+    next()
+})
+userSchema.post('updateOne', function async(doc, next) {
+    const order = this
+    console.log(order);
     next()
 })
 
