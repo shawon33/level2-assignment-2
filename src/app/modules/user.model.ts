@@ -92,6 +92,8 @@ const userSchema = new Schema<User>({
 
 
 //  middle ware
+
+// saved user with post
 userSchema.pre('save', async function (next) {
     const user = this;
     user.password = await bcrypt.hash(user.password, Number(config.bcrypt_salt_round))
@@ -109,8 +111,8 @@ userSchema.post('save', function (doc, next) {
 })
 
 
-// next one
 
+// all user
 
 userSchema.pre('find', function async(next) {
     const fieldMap = new Map<string, boolean>();
@@ -124,10 +126,18 @@ userSchema.pre('find', function async(next) {
     next()
 })
 
-// userSchema.post('find', function (doc, next) {
-//  console.log(this,"post data");
-//     next()
-// })
+//single user 
+userSchema.pre('findOne', function async(next) {
+    const fieldMap = new Map<string, boolean>();
+    fieldMap.delete('_id');
+    fieldMap.set('userName', true);
+    fieldMap.set('fullName', true);
+    fieldMap.set('age', true);
+    fieldMap.set('address', true);
+    const fieldsToSelect =Array.from(fieldMap.keys()).join(' ');
+    this.select(fieldsToSelect)
+    next()
+})
 
 
 
