@@ -13,7 +13,6 @@ const userNameSchema = new Schema<userFullName>({
         type: String,
 
     },
-    _id: false
 })
 
 const userAddressSchema = new Schema<userAddress>({
@@ -29,7 +28,6 @@ const userAddressSchema = new Schema<userAddress>({
         type: String,
         required: true
     },
-    _id: false
 })
 
 const userOrderSchema = new Schema<userOrder>({
@@ -45,9 +43,6 @@ const userOrderSchema = new Schema<userOrder>({
         type: Number,
         required: true
     },
-    _id: false
-
-
 })
 
 const userSchema = new Schema<User>({
@@ -56,7 +51,7 @@ const userSchema = new Schema<User>({
         required: true,
         unique: true,
     },
-    userName: {
+    username: {
         type: String,
         required: true,
         unique: true,
@@ -83,8 +78,6 @@ const userSchema = new Schema<User>({
     hobbies: {
         type: String,
         emu: ['reading', 'summing', 'journey'],
-        _id: false
-
     },
     address: userAddressSchema,
     order: [userOrderSchema],
@@ -116,7 +109,7 @@ userSchema.pre('save', async function (next) {
 
 userSchema.pre('find', function async(next) {
     const fieldMap = new Map<string, boolean>();
-    fieldMap.set('userName', true);
+    fieldMap.set('username', true);
     fieldMap.set('fullName', true);
     fieldMap.set('age', true);
     fieldMap.set('address', true);
@@ -129,7 +122,7 @@ userSchema.pre('find', function async(next) {
 //single user 
 userSchema.pre('findOne', function async(next) {
     const fieldMap = new Map<string, boolean>();
-    fieldMap.set('userName', true);
+    fieldMap.set('username', true);
     fieldMap.set('fullName', true);
     fieldMap.set('age', true);
     fieldMap.set('age', true);
@@ -146,7 +139,7 @@ userSchema.pre('findOne', function async(next) {
 userSchema.pre('findOneAndUpdate', function async(next) {
     const fieldMap = new Map<string, boolean>();
     fieldMap.delete('_id');
-    fieldMap.set('userName', true);
+    fieldMap.set('username', true);
     fieldMap.set('fullName', true);
     fieldMap.set('age', true);
     fieldMap.set('email', true);
@@ -154,13 +147,13 @@ userSchema.pre('findOneAndUpdate', function async(next) {
     fieldMap.set('address', true);
     const fieldsToSelect = Array.from(fieldMap.keys()).join(' ');
     this.select(fieldsToSelect)
-    console.log(this, ' take user  which is single');
+    // console.log(this, ' take user  which is single');
     next()
 })
 
 
 userSchema.post('updateOne', function async(doc, next) {
-    console.log(this, 'updated user');
+    // console.log(this, 'updated user');
     next()
 })
 
@@ -168,12 +161,12 @@ userSchema.post('updateOne', function async(doc, next) {
 // order update
 userSchema.pre('updateOne', function async(next) {
     const newData = this.getUpdate();
-    console.log(newData);
+    // console.log(newData);
     next()
 })
 userSchema.post('updateOne', function async(doc, next) {
     const order = this
-    console.log(order);
+    // console.log(order);
     next()
 })
 

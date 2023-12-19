@@ -1,6 +1,6 @@
-import { Schema, model, connect } from 'mongoose';
-import { User } from './user.interface';
+// import { Schema, model, connect } from 'mongoose';
+// import { User } from './user.interface';
 
-const userSchema = new Schema<User>({
+// const userSchema = new Schema<User>({
     
-})
+// })

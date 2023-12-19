@@ -4,16 +4,16 @@ import { UserController } from './user.controller';
 
 const router = express.Router();
 
-router.post('/create-user',UserController.createUser);
+router.post('/',UserController.createUser);
 
 router.get('/',UserController.getALLUser)
 
 router.get('/:id',UserController.getSingleUser)
 
-router.delete('/:id',UserController.deleteUser)
-
 router.put('/:id', UserController.updateUser)
 
 router.put('/:id/orders',UserController.updateUserOrder)
+
+router.delete('/:id',UserController.deleteUser)
 
 export const UserRoutes = router;

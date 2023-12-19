@@ -4,7 +4,8 @@ import { UserServices } from "./user.service";
 const createUser = async (req: Request, res: Response) => {
     try {
 
-        const user = req.body;
+        const  user  = req.body;
+        console.log(user,"ame controller thakey");
         const result = await UserServices.createUserIntoDB(user);
         res.status(200).json({
             success: true,
@@ -13,7 +14,7 @@ const createUser = async (req: Request, res: Response) => {
         })
 
     } catch (error: any) {
-        console.log(error);
+        console.log(error,'ame controller error');
         res.status(500).json({
             success: false,
             message: error.message || "something went wrong",
@@ -146,7 +147,7 @@ const updateUserOrder = async (req: Request, res: Response) => {
 export const UserController = {
     createUser,
     getALLUser,
-    getSingleUser, 
+    getSingleUser,
     updateUser,
     updateUserOrder,
     deleteUser

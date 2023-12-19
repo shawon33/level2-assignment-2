@@ -3,6 +3,7 @@ import { User } from "./user.interface";
 
 const createUserIntoDB = async (user: User): Promise<User> => {
   const result = await UserModel.create(user);
+  console.log(result,'services thakey');
   return result;
 }
 

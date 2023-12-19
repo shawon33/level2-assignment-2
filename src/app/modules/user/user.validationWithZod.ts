@@ -5,7 +5,6 @@ import { z } from 'zod';
 const userFullNameSchema = z.object({
     firstName: z.string(),
     lastName: z.string(),
-    _id:z.string()
 });
 
 // Define Zod schema for userAddress
@@ -13,7 +12,6 @@ const userAddressSchema = z.object({
     street: z.string(),
     city: z.string(),
     country: z.string(),
-    _id:z.string()
 });
 
 // Define Zod schema for userOrder
@@ -21,13 +19,12 @@ const userOrderSchema = z.object({
     productName: z.string(),
     price: z.number(),
     quantity: z.number(),
-    _id:z.string()
 });
 
 // Define Zod schema for User
    const userValidationSchema = z.object({
     userId: z.number().min(1),
-    userName: z.string(),
+    username: z.string(),
     password: z.string().max(20),
     fullName: userFullNameSchema,
     age: z.number().positive("Age must be positive"),
